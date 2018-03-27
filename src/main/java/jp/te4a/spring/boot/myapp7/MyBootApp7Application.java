@@ -1,4 +1,4 @@
-package jp.te4a.spring.boot.myapp6;
+package jp.te4a.spring.boot.myapp7;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,7 +10,7 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringBootApplication
-public class MyBootApp6Application {// implements CommandLineRunner {
+public class MyBootApp7Application {// implements CommandLineRunner {
 
 //	@Autowired
 //	BookBean bookBean;
@@ -21,6 +21,6 @@ public class MyBootApp6Application {// implements CommandLineRunner {
 	}*/
 
 	public static void main(String[] args) {
-		SpringApplication.run(MyBootApp6Application.class, args);
+		SpringApplication.run(MyBootApp7Application.class, args);
 	}
 }
