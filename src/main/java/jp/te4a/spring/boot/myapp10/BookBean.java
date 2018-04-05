@@ -12,6 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class BookBean {
 	  @Id
+	  // Hibernateバージョンアップに伴うプロパティ追加
 	  @GeneratedValue
 	  private Integer id ;
 	  @Column(nullable = false)
