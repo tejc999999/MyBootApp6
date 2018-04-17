@@ -15,7 +15,7 @@ public class HelloController {
     BookService bookService;
     @RequestMapping("/")
     public String index(Model model) {
-        model.addAttribute("msg", "this is setting message");
+        model.addAttribute("msg", "this is a setting message");
         return "index";
     }
     @RequestMapping(value="/post", method=RequestMethod.POST)
