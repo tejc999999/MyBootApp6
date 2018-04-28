@@ -9,6 +9,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -129,9 +132,9 @@ public class BookRepositoryTest {
 		
 		@Test
 		public void delete_正常系_一件だけ存在するidを指定したdeleteを実行するとBookBeanが削除される() {
-			BookBean BookBean = new BookBean(1, "a", "b", "c", 100);
-			bookRepository.save(BookBean);
-			bookRepository.delete(BookBean.getId());
+			BookBean bookBean = new BookBean(1, "a", "b", "c", 100);
+			bookRepository.save(bookBean);
+			bookRepository.delete(bookBean.getId());
 			int actual = bookRepository.findAll().size();
 			int expected = 0;
 			assertThat(actual, is(expected));
@@ -139,21 +142,23 @@ public class BookRepositoryTest {
 
 		@Test
 		public void delete_正常系_複数件だけ存在するidを指定したdeleteを実行するとBookBeanが削除される() {
-			BookBean BookBean1 = new BookBean(1, "a", "b", "c", 100);
-			BookBean BookBean2 = new BookBean(2, "aa", "bb", "cc", 101);
-			bookRepository.save(BookBean1);
-			bookRepository.save(BookBean2);
-			bookRepository.delete(BookBean1.getId());
+			BookBean bookBean1 = new BookBean(1, "a", "b", "c", 100);
+			BookBean bookBean2 = new BookBean(2, "aa", "bb", "cc", 101);
+			bookRepository.save(bookBean1);
+			bookRepository.save(bookBean2);
+			int expected = bookRepository.findAll().size() - 1;
+			bookRepository.delete(bookBean1.getId());
 			int actual = bookRepository.findAll().size();
-			int expected = 1;
 			assertThat(actual, is(expected));
 		}
 
 		@Test
 		public void delete_正常系_存在しないidを指定したdeleteを実行すると処理は行われない() {
+			BookBean BookBean = new BookBean(1, "a", "b", "c", 100);
+			bookRepository.save(BookBean);
 			bookRepository.delete(1);
+			int expected = bookRepository.findAll().size();
 			int actual = bookRepository.findAll().size();
-			int expected = 0;
 			assertThat(actual, is(expected));
 		}
 	}
@@ -180,6 +185,17 @@ public class BookRepositoryTest {
 			bookRepository.save(bookBean);
 			int actual = bookRepository.findAll().size();
 			int expected = 1;
+			assertThat(actual, is(expected));
+		}
+
+		@Test
+		public void findAll_登録数が複数ならサイズが存在件数だけのListを取得する() {
+			BookBean bookBean1 = new BookBean(1, "a", "b", "c", 100);
+			BookBean bookBean2 = new BookBean(2, "aa", "bb", "cc", 101);
+			bookRepository.save(bookBean1);
+			bookRepository.save(bookBean2);
+			int actual = bookRepository.findAll().size();
+			int expected = 2;
 			assertThat(actual, is(expected));
 		}
 
