@@ -131,6 +131,17 @@ public class BookServiceTest {
 			int expected = 1;
 			assertThat(actual, is(expected));
 		}
+		
+		@Test
+		public void findAll_登録数が複数ならサイズが存在件数だけのListを取得する() {
+			BookBean bookBean1 = new BookBean(1, "a", "b", "c", 100);
+			BookBean bookBean2 = new BookBean(2, "aa", "bb", "cc", 101);
+			bookService.save(bookBean1);
+			bookService.save(bookBean2);
+			int actual = bookService.findAll().size();
+			int expected = 2;
+			assertThat(actual, is(expected));
+		}
 
 		@Test
 		public void findAll_登録したBookBeanと同じフィールドを持つBookBeanを取得する() {
