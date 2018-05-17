@@ -1,8 +1,10 @@
-package jp.te4a.spring.boot.myapp11;
+package jp.te4a.spring.boot.myapp13.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import jp.te4a.spring.boot.myapp13.bean.BookBean;
 
 public interface BookRepository extends JpaRepository<BookBean, Integer>{
 
