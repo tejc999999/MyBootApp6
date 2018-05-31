@@ -7,7 +7,7 @@
 <title>Index</title>
 </head>
 <body>
-    <h1>Index Page</h1>
+    <h1>Index Page2</h1>
     <p>this is sample page for Spring Boot!</p>
     <p>${msg}</p>
     <form method="post" action="/post">
