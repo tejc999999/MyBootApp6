@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Index5</title>
+<title>Index</title>
 </head>
 <body>
-    <h1>Index Page2</h1>
+    <h1>Index Page4</h1>
     <p>this is sample page for Spring Boot!</p>
     <p>${msg}</p>
     <form method="post" action="/post">
