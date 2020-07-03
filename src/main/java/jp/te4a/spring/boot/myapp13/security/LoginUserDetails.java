@@ -5,8 +5,11 @@ import org.springframework.security.core.userdetails.User;
 
 import jp.te4a.spring.boot.myapp13.bean.UserBean;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@SuppressWarnings("serial")
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class LoginUserDetails extends User {
 
 	private final UserBean user;

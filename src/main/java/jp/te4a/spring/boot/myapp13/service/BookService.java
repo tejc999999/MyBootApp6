@@ -49,7 +49,7 @@ public class BookService {
 	  public void delete(Integer id) {
 		  // bookRepository.delete(id);
 		  BookBean bookBean = new BookBean();
-//		  bookBean.setId(id);
+		  bookBean.setId(id);
 		  bookRepository.delete(bookBean);
 	  }
 
